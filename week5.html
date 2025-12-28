@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 5</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="assets/nav.css">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div id="navbar">
+  <a href="index.html" class="home-link">Home</a>
+  <a href="about.html" class="nav-name">Simona Stoyanova · 1GDM1</a>
+
+  <div class="nav-right">
+    <a href="contact.html" class="nav-link">Contact</a>
+
+    <div class="dropdown">
+      <button class="dropbtn">Weken ▾</button>
+      <div class="dropdown-content">
+        <a href="week1.html">Week 1</a>
+        <a href="week2.html">Week 2</a>
+        <a href="week3.html">Week 3</a>
+        <a href="week4.html">Week 4</a>
+        <a href="week5.html">Week 5</a>
+        <a href="week6.html">Week 6</a>
+        <a href="week7.html">Week 7</a>
+        <a href="week8.html">Week 8</a>
+        <a href="week9.html">Week 9</a>
+        <a href="week10.html">Week 10</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="page-wrapper">
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <h1>Week 5</h1>
+    <p class="subtitle">Kleuronderzoek</p>
+  </header>
+
+  <!-- SECTION 1 -->
+  <section class="content-section">
+    <article class="text-box">
+      <h3 style="text-align:center;">Zoektocht naar een text kleur tegen mijn achtergrond</h3>
+      <p>
+        In deze week besloot ik bewust een stap terug te zetten van het schermontwerp en me te focussen op kleuronderzoek. De blauwe achtergrond voelde al juist aan, maar ik was nog op zoek naar een geschikte tekstkleur en een tweede, ondersteunende kleur voor andere elementen binnen de schermen.
+
+       <p>Uiteindelijk kwam ik uit bij drie opties: wit, magenta en geel. Wit bleek het meest leesbaar, maar ook het minst karaktervol. Magenta had dan weer te weinig contrast en was vanop afstand moeilijker te lezen. Daarom koos ik uiteindelijk voor geel, dat zowel voldoende contrast bood als visueel sterker aanvoelde binnen het geheel.
+        </p>
+      </p>
+    </article>
+
+    <div class="image-viewer">
+      <button class="viewer-btn prev" data-group="1">&#10094;</button>
+      <img id="viewerImage1" src="" alt="Week 5 concept images">
+      <button class="viewer-btn next" data-group="1">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="content-section">
+    <article class="text-box">
+      <h3 style="text-align:center;">Kleur ratio</h3>
+      <p>
+        Ik ben ervan bewust dat er verschillende websites bestaan die een contrastscore toekennen aan kleurcombinaties. Toch was ik benieuwd naar de scores van mijn eigen kleurkeuzes. Zoals eerder verwacht behaalde magenta de laagste score, wit de hoogste en geel een nog steeds vrij hoge score. <p>Ondanks de uitstekende leesbaarheid van wit heb ik er bewust voor gekozen deze kleur niet te gebruiken. Ik vond het wit als designkeuze een heel veilige keuze, zou het goed eruitzien? Ja, zeker. Zou het saai zijn? Ja,zeker.</p>
+      </p>
+    </article>
+
+    <div class="image-viewer">
+      <button class="viewer-btn prev" data-group="2">&#10094;</button>
+      <img id="viewerImage2" src="" alt="Week 5 visual design images">
+      <button class="viewer-btn next" data-group="2">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="content-section">
+    <article class="text-box">
+      <h3 style="text-align:center;">Kleurpaletten tegen kleurblindheid</h3>
+      <p>
+        Als laatste test heb ik mijn kleuren ingevoerd in <a href="https://coolors.co/" target="_blank" rel="noopener noreferrer">Coolors</a>  en een extra lichtere blauwtint toegevoegd om de kleuren te testen bij verschillende vormen van kleurenblindheid. Hieruit bleek dat magenta het minst duidelijk was, terwijl de andere kleuren voldoende van elkaar verschilden en de leesbaarheid en duidelijkheid van de borden niet significant verstoren.
+      </p>
+    </article>
+
+    <div class="image-viewer">
+      <button class="viewer-btn prev" data-group="3">&#10094;</button>
+      <img id="viewerImage3" src="" alt="Week 5 iteration images">
+      <button class="viewer-btn next" data-group="3">&#10095;</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- MODAL -->
+<div id="imageModal" class="modal">
+  <span class="modal-close">&times;</span>
+  <img class="modal-content" id="modalImg">
+</div>
+
+<!-- SCRIPT -->
+<script>
+  const imageGroups = {
+    1: [
+      "Images/kleur-text1.png",
+      "Images/kleur-text2.png",
+      "Images/kleur-text3.png"
+    ],
+    2: [
+      "Images/kleur-contrast1.png",
+      "Images/kleur-contrast2.png",
+      "Images/kleur-contrast3.png"
+    ],
+    3: [
+      "Images/kleurpalet1.png",
+      "Images/kleurpalet2.png",
+      "Images/kleurpalet3.png",
+      "Images/kleurpalet4.png",
+      "Images/kleurpalet5.png"
+    ]
+  };
+
+  const indices = { 1: 0, 2: 0, 3: 0 };
+
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+
+  // Initialize images
+  Object.keys(imageGroups).forEach(group => {
+    document.getElementById(`viewerImage${group}`).src = imageGroups[group][0];
+  });
+
+  document.querySelectorAll(".viewer-btn").forEach(btn => {
+    btn.onclick = () => {
+      const group = btn.dataset.group;
+      const isNext = btn.classList.contains("next");
+
+      indices[group] =
+        isNext
+          ? (indices[group] + 1) % imageGroups[group].length
+          : (indices[group] - 1 + imageGroups[group].length) % imageGroups[group].length;
+
+      document.getElementById(`viewerImage${group}`).src =
+        imageGroups[group][indices[group]];
+    };
+  });
+
+  document.querySelectorAll(".image-viewer img").forEach(img => {
+    img.onclick = () => {
+      modal.style.display = "flex";
+      modalImg.src = img.src;
+    };
+  });
+
+  document.querySelector(".modal-close").onclick = () => {
+    modal.style.display = "none";
+  };
+
+  modal.onclick = (e) => {
+    if (e.target === modal) modal.style.display = "none";
+  };
+</script>
+
+</body>
+</html>

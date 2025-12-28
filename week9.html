@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 9</title>
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- External CSS -->
+<link rel="stylesheet" href="assets/nav.css">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div id="navbar">
+  <a href="index.html" class="home-link">Home</a>
+  <a href="about.html" class="nav-name">Simona Stoyanova · 1GDM1</a>
+  <div class="nav-right">
+    <a href="contact.html" class="nav-link">Contact</a>
+    <div class="dropdown">
+      <button class="dropbtn">Weken ▾</button>
+      <div class="dropdown-content">
+        <a href="week1.html">Week 1</a>
+        <a href="week2.html">Week 2</a>
+        <a href="week3.html">Week 3</a>
+        <a href="week4.html">Week 4</a>
+        <a href="week5.html">Week 5</a>
+        <a href="week6.html">Week 6</a>
+        <a href="week7.html">Week 7</a>
+        <a href="week8.html">Week 8</a>
+        <a href="week9.html">Week 9</a>
+        <a href="week10.html">Week 10</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="page-wrapper">
+
+<header class="page-header">
+  <h1>Week 9</h1>
+  <p class="subtitle">Flows</p>
+</header>
+
+<!-- ===== SECTION 1 ===== -->
+<section class="content-section">
+
+  <article class="text-box">
+    <h3 style="text-align:center;">App & flows</h3>
+    <p>
+      Een van de laatste onderdelen die ik moest uitwerken, waren de flows.
+      Hierbij focuste ik mij op de meest essentiële interacties binnen de app.
+    </p>
+    <br>
+    <p>
+      Deze flows vormen de basis van de gebruikerservaring en moesten daarom
+      logisch, duidelijk en gebruiksvriendelijk zijn.
+    </p>
+  </article>
+
+  <div class="image-viewer">
+    <button class="viewer-btn prev" data-group="1">&#10094;</button>
+    <img id="viewerImage1" alt="Flows overzicht">
+    <button class="viewer-btn next" data-group="1">&#10095;</button>
+  </div>
+
+</section>
+
+<!-- ===== SECTION 2 ===== -->
+<section class="content-section">
+
+  <article class="text-box">
+    <h3 style="text-align:center;">Inloggen & account</h3>
+    <p>
+      De login- en accountflow zijn cruciaal omdat ze het eerste contactpunt
+      vormen tussen gebruiker en applicatie.
+    </p>
+    <br>
+    <p>
+      Er werd extra aandacht besteed aan foutmeldingen, validatie en
+      begrijpelijke stappen binnen dit proces.
+    </p>
+  </article>
+
+  <div class="image-viewer">
+    <button class="viewer-btn prev" data-group="2">&#10094;</button>
+    <img id="viewerImage2" alt="Login flow">
+    <button class="viewer-btn next" data-group="2">&#10095;</button>
+  </div>
+
+</section>
+
+<!-- ===== SECTION 3 ===== -->
+<section class="content-section">
+
+  <article class="text-box">
+    <h3 style="text-align:center;">Reis & tickets</h3>
+    <p>
+      De laatste flow focust op het plannen van een reis en het kiezen van
+      tickets. Hierbij stond overzicht en eenvoud centraal.
+    </p>
+    <br>
+    <p>
+      Door complexe keuzes op te splitsen in duidelijke stappen blijft
+      de gebruiker controle behouden over het proces en dit heb ik ook allemaal in alle drie talen gemaakt.
+    </p>
+  </article>
+
+  <div class="image-viewer">
+    <button class="viewer-btn prev" data-group="3">&#10094;</button>
+    <img id="viewerImage3" alt="Ticket flow">
+    <button class="viewer-btn next" data-group="3">&#10095;</button>
+  </div>
+
+</section>
+
+</main>
+
+<!-- MODAL -->
+<div id="imageModal" class="modal">
+  <span class="modal-close">&times;</span>
+  <img class="modal-content" id="modalImg">
+</div>
+
+<script>
+const imageGroups = {
+  1: [
+    "Images/schermen/account-NL.png",
+    "Images/schermen/wachtwoord-NL.png",
+    "Images/schermen/aanmelden-NL.png",
+    "Images/schermen/reis-NL.png",
+    "Images/schermen/reis2-NL.png",
+    "Images/schermen/ticket-NL.png"
+  ],
+  2: [
+    "Images/schermen/account-FR.png",
+    "Images/schermen/wachtwoord-FR.png",
+    "Images/schermen/aanmelden-FR.png",
+    "Images/schermen/reis-FR.png",
+    "Images/schermen/reis2-FR.png",
+    "Images/schermen/tickets-DE.png"
+  ],
+  3: [
+    "Images/schermen/account-DE.png",
+    "Images/schermen/wachtwoord-DE.png",
+    "Images/schermen/aanmelden-DE.png",
+    "Images/schermen/reis-DE.png",
+    "Images/schermen/reis2-DE.png",
+    "Images/schermen/tickets-DE.png"
+  ]
+};
+
+const indices = { 1: 0, 2: 0, 3: 0 };
+
+const modal = document.getElementById("imageModal");
+const modalImg = document.getElementById("modalImg");
+
+// Init images
+Object.keys(imageGroups).forEach(group => {
+  document.getElementById(`viewerImage${group}`).src = imageGroups[group][0];
+});
+
+document.querySelectorAll(".viewer-btn").forEach(btn => {
+  btn.onclick = () => {
+    const group = btn.dataset.group;
+    const isNext = btn.classList.contains("next");
+
+    indices[group] = isNext
+      ? (indices[group] + 1) % imageGroups[group].length
+      : (indices[group] - 1 + imageGroups[group].length) % imageGroups[group].length;
+
+    document.getElementById(`viewerImage${group}`).src =
+      imageGroups[group][indices[group]];
+  };
+});
+
+document.querySelectorAll(".image-viewer img").forEach(img => {
+  img.onclick = () => {
+    modal.style.display = "flex";
+    modalImg.src = img.src;
+  };
+});
+
+document.querySelector(".modal-close").onclick = () => {
+  modal.style.display = "none";
+};
+
+modal.onclick = (e) => {
+  if (e.target === modal) modal.style.display = "none";
+};
+</script>
+
+</body>
+</html>

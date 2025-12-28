@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 8</title>
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- External CSS -->
+<link rel="stylesheet" href="assets/nav.css">
+<link rel="stylesheet" href="assets/styles.css">
+
+<style>
+/* ===== PAGE WRAPPER ===== */
+.page-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 50px 30px;
+    box-sizing: border-box;
+}
+
+/* ===== HEADER ===== */
+.page-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* ===== SECTION LAYOUT ===== */
+.content-section {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+/* ===== TEXT ===== */
+.text-box {
+    width: 50%;
+    background: #0B245A;
+    border: 3px solid #FFB700;
+    padding: 25px;
+    box-sizing: border-box;
+    line-height: 1.7;
+}
+
+/* ===== GALLERY FRAME ===== */
+.image-viewer {
+    width: 50%;
+    height: 360px;
+    background: #0B245A;
+    border: 3px solid #FFB700;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== IMAGE ===== */
+.image-viewer img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+/* ===== NAV BUTTONS ===== */
+.viewer-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: #FFB700;
+    border: none;
+    font-size: 30px;
+    padding: 6px 14px;
+    cursor: pointer;
+}
+
+.viewer-btn:hover {
+    background: #2558BF;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* ===== MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 5000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    max-width: 80vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border: 5px solid #FFB700;
+    background: #0B245A;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 42px;
+    color: #FFB700;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #2558BF;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .content-section {
+        flex-direction: column;
+    }
+
+    .text-box,
+    .image-viewer {
+        width: 100%;
+    }
+
+    .image-viewer {
+        height: 300px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div id="navbar">
+  <a href="index.html" class="home-link">Home</a>
+  <a href="about.html" class="nav-name">Simona Stoyanova · 1GDM1</a>
+  <div class="nav-right">
+    <a href="contact.html" class="nav-link">Contact</a>
+    <div class="dropdown">
+      <button class="dropbtn">Weken ▾</button>
+      <div class="dropdown-content">
+        <a href="week1.html">Week 1</a>
+        <a href="week2.html">Week 2</a>
+        <a href="week3.html">Week 3</a>
+        <a href="week4.html">Week 4</a>
+        <a href="week5.html">Week 5</a>
+        <a href="week6.html">Week 6</a>
+        <a href="week7.html">Week 7</a>
+        <a href="week8.html">Week 8</a>
+        <a href="week9.html">Week 9</a>
+        <a href="week10.html">Week 10</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="page-wrapper">
+
+<header class="page-header">
+  <h1>Week 8</h1>
+  <p class="subtitle">Verdere uitwerking</p>
+</header>
+
+<section class="content-section">
+
+  <!-- TEXT -->
+  <article class="text-box">
+    <h3 style="text-align:center;">Wagonindelingscherm</h3>
+    <p>
+        Bij het ontwerpen van het wagonindelingsscherm heb ik bewust meer grafische elementen toegevoegd. Hiermee wilde ik het scherm visueel interessanter maken en vermijden dat de stijl te voorspelbaar of eentonig wordt voor de kijker. Tegelijk heb ik ervoor gezorgd dat deze aanpassingen geen breuk vormen met mijn bestaande visuele stijl.
+    </p>
+
+    <br>
+
+    <p>
+        Door subtiel af te wijken van het eerdere ontwerp blijft de herkenbaarheid behouden, terwijl het scherm toch voldoende variatie biedt. Zo ontstaat een evenwicht tussen consistentie en visuele dynamiek.
+    </p>
+  </article>
+
+  <!-- GALLERY -->
+  <div class="image-viewer">
+    <button class="viewer-btn prev">&#10094;</button>
+    <img id="viewerImage" src="" alt="Week 2 image">
+    <button class="viewer-btn next">&#10095;</button>
+  </div>
+
+</section>
+
+</main>
+
+<!-- MODAL -->
+<div id="imageModal" class="modal" style="display:none;">
+  <span class="modal-close">&times;</span>
+  <img class="modal-content" id="modalImg">
+</div>
+
+<script>
+const images = [
+  "Images/schermen/wagonindeling-NL.png",
+  "Images/schermen/wagonindeling-FR.png", 
+  "Images/schermen/wagonindeling-DE.png"
+];
+
+let index = 0;
+
+const viewerImage = document.getElementById("viewerImage");
+const modal = document.getElementById("imageModal");
+const modalImg = document.getElementById("modalImg");
+
+// Initialize first image on page load
+viewerImage.src = images[index];
+
+document.querySelector(".next").onclick = () => {
+  index = (index + 1) % images.length;
+  viewerImage.src = images[index];
+};
+
+document.querySelector(".prev").onclick = () => {
+  index = (index - 1 + images.length) % images.length;
+  viewerImage.src = images[index];
+};
+
+viewerImage.onclick = () => {
+  modal.style.display = "flex";
+  modalImg.src = viewerImage.src;
+};
+
+document.querySelector(".modal-close").onclick = () => {
+  modal.style.display = "none";
+};
+
+modal.onclick = (e) => {
+  if (e.target === modal) modal.style.display = "none";
+};
+</script>
+
+</body>
+</html>
+
